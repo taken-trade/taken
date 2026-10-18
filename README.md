@@ -65,14 +65,20 @@ OAuth is not currently available. Clients that require OAuth for remote MCP conn
 
 ## How it works
 
-```mermaid
-flowchart LR
-    U[You or your AI agent] --> I[Taken app, REST API, or MCP]
-    I --> C[Authentication, permissions, and limits]
-    C --> B[Supported browser workflow]
-    B --> R[Progress and result]
-    R --> U
-    H[User controls in the app] --> B
+```text
+You / your AI agent
+        |
+        v
+Taken app, REST API, or MCP
+        |
+        v
+Authentication + scopes + limits
+        |
+        v
+Supported browser workflow  <-- User controls in Taken
+        |
+        v
+Progress + result
 ```
 
 An API key acts as its owner and is limited by its scopes. REST and MCP use the same account and subscription limits as the app. Tasks run in bounded steps; polling a running task advances it unless `advance=false` is specified.
